@@ -8,13 +8,13 @@ Urban traffic congestion is influenced by both spatial and temporal factors. Tra
 
 To model this behavior, we implemented a Long Short-Term Temporal Network (LSTTN) that captures:
 
-Spatial dependencies between traffic sensors
+1.Spatial dependencies between traffic sensors
 
-Temporal patterns in time-series traffic data
+2.Temporal patterns in time-series traffic data
 
-Important signal contributions using attention mechanisms
+3.Important signal contributions using attention mechanisms
 
-The system predicts traffic speeds for the next:
+4.The system predicts traffic speeds for the next:
 
 5 minutes
 
@@ -30,13 +30,13 @@ The system predicts traffic speeds for the next:
 
 Dataset
 ---
-We used the METR-LA dataset, which contains:
+1.We used the METR-LA dataset, which contains:
 
-Data from 207 traffic loop detectors
+2.Data from 207 traffic loop detectors
 
-Speed measurements recorded every 5 minutes
+3.Speed measurements recorded every 5 minutes
 
-Stored in .npz format
+4.Stored in .npz format
 
 The dataset provides real-world traffic patterns and allows the model to learn daily and weekly congestion trends.
 
@@ -44,19 +44,19 @@ Model Architecture
 ---
 The proposed model is based on a multi-stream feature fusion approach:
 
-1. CNN Layers
+1. CNN Layers:
 
 Used to extract spatial relationships between neighboring road sensors.
 
-2. LSTM Layers
+2. LSTM Layers:
 
 Used to capture temporal dependencies in sequential traffic data.
 
-3. Attention Mechanism
+3. Attention Mechanism:
 
 Helps the model focus on the most influential sensors and time steps.
 
-4. Feature Fusion
+4. Feature Fusion:
 
 Combines spatial and temporal features before final prediction.
 
@@ -64,64 +64,64 @@ This architecture enables multi-step traffic forecasting instead of only predict
 
 System Workflow
 ---
-Load and preprocess historical traffic data
+1.Load and preprocess historical traffic data
 
-Normalize and create time-sequence windows
+2.Normalize and create time-sequence windows
 
-Train LSTTN model on spatial-temporal features
+3.Train LSTTN model on spatial-temporal features
 
-Generate multi-step predictions
+4.Generate multi-step predictions
 
-Display predictions via Flask web interface
+5.Display predictions via Flask web interface
 
 Web Interface
 ---
-A Flask-based web application was developed to:
+1.A Flask-based web application was developed to:
 
-Upload .npz dataset files
+2.Upload .npz dataset files
 
-Trigger prediction using the trained model
+3.Trigger prediction using the trained model
 
-Display predicted vs actual traffic speeds
+4.Display predicted vs actual traffic speeds
 
-The interface demonstrates how a research model can be connected to a user-facing system.
+5.The interface demonstrates how a research model can be connected to a user-facing system.
 
 Technologies Used
 ---
-Python
+1.Python
 
-TensorFlow / Keras
+2.TensorFlow 
 
-Flask
+3.Flask
 
-NumPy, Pandas
+4.NumPy, Pandas
 
-Matplotlib, Seaborn
+5.Matplotlib, Seaborn
 
 Model Evaluation
 --
-The model was evaluated using:
+1.The model was evaluated using:
 
-MAE (Mean Absolute Error)
+2.MAE (Mean Absolute Error)
 
-RMSE (Root Mean Squared Error)
+3.RMSE (Root Mean Squared Error)
 
 These metrics measure prediction accuracy and robustness for multi-step forecasting.
 
 Limitations
 --
-Does not currently incorporate external factors such as weather, accidents, or road construction
+1.Does not currently incorporate external factors such as weather, accidents, or road construction
 
-Requires manual dataset upload (no live API integration)
+2.Requires manual dataset upload (no live API integration)
 
-Trained specifically on METR-LA dataset
+3.Trained specifically on METR-LA dataset
 
 Future Scope
 ---
-Integration with real-time traffic APIs
+1.Integration with real-time traffic APIs
 
-Inclusion of weather and incident data as additional features
+2.Inclusion of weather and incident data as additional features
 
-Deployment for Indian urban traffic systems
+3.Deployment for Indian urban traffic systems
 
-Extension to real-time adaptive signal control
+4.Extension to real-time adaptive signal control
