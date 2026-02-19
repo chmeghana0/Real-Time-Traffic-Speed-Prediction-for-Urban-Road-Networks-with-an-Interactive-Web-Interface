@@ -8,14 +8,14 @@ from config.config import Config
 app = Flask(__name__)
 cfg = Config()
 
-# --- Load model ---
+
 input_dim = 207
 output_dim = 6 * 207  # 6 future steps × 207 sensors
 model = LSTTNModel(input_dim, cfg.hidden_dim, output_dim)
 model.load_state_dict(torch.load("saved_model.pt"))
 model.eval()
 
-# ✅ Load mean and std for denormalization
+
 stats = np.load("data/METR-LA/norm_stats.npz")
 mean = stats["mean"]  # shape: (207,)
 std = stats["std"]    # shape: (207,)
@@ -40,7 +40,7 @@ def predict():
     pred = model(X).view(-1, 6, 207)  # (batch, steps, sensors)
     y_true = y_true.view(-1, 6, 207)
 
-    # ✅ Display: 5 samples × 3 sensors × 6 steps
+  
     rows = []
     for i in range(min(5, X.shape[0])):
         for j in range(3):  # sensors 0,1,2
@@ -58,3 +58,4 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
